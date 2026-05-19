@@ -25,7 +25,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: FRONTEND_URL
-        value: https://xchange-app.onrender.com
+        value: https://xchange-app-y9o8.onrender.com
       - key: TWILIO_ACCOUNT_SID
         sync: false
       - key: TWILIO_AUTH_TOKEN

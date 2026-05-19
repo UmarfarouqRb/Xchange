@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ArrowLeft, Video, Phone, MoreVertical } from 'lucide-react';
-import xchangeLogo from '@/public/Xchange dark.png'; // Importing the logo
+import xchangeLogo from '@/public/Xchange light.png'; // Importing the logo
 
 const Header = () => {
   return (
@@ -13,8 +13,8 @@ const Header = () => {
         <Image
           src={xchangeLogo}
           alt="Xchange Logo"
-          width={50} // Corresponds to w-8
-          height={50} // Corresponds to h-8
+          width={60} // Corresponds to w-8
+          height={60} // Corresponds to h-8
           className="mr-3"
         />
         <div>
