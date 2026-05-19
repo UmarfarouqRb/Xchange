@@ -10,15 +10,9 @@ services:
     startCommand: "npm run start"
     envVars:
       - key: NEXT_PUBLIC_URL
-        fromService:
-          type: web
-          name: xchange-app
-          property: url
+        value: ${RENDER_EXTERNAL_URL}
       - key: NEXT_PUBLIC_BOT_URL
-        fromService:
-          type: web
-          name: xchange-bot
-          property: url
+        value: https://xchange-bot.onrender.com
 
   # Backend Service (NestJS)
   - type: web
@@ -31,10 +25,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: FRONTEND_URL
-        fromService:
-          type: web
-          name: xchange-app
-          property: url
+        value: https://xchange-app.onrender.com
       - key: TWILIO_ACCOUNT_SID
         sync: false
       - key: TWILIO_AUTH_TOKEN
