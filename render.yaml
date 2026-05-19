@@ -1,0 +1,43 @@
+
+services:
+  # Frontend Service (Next.js)
+  - type: web
+    name: xchange-app
+    env: node
+    rootDir: ./xchange-app
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    envVars:
+      - key: NEXT_PUBLIC_URL
+        fromService:
+          type: web
+          name: xchange-app
+          property: url
+      - key: NEXT_PUBLIC_BOT_URL
+        fromService:
+          type: web
+          name: xchange-bot
+          property: url
+
+  # Backend Service (NestJS)
+  - type: web
+    name: xchange-bot
+    env: node
+    rootDir: ./xchange-bot
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start:prod"
+    healthCheckPath: /
+    envVars:
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: xchange-app
+          property: url
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_PHONE_NUMBER # Placeholder for your Twilio number
+        sync: false
